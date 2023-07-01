@@ -1,0 +1,209 @@
+<section class="vh-75">
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card bg-dark text-white" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-3">
+              <h3 class="pb-3">Enter your Details</h3>
+              <div class="form-outline form-white mb-2" *ngIf="step == 1">
+                <div *ngIf="entered" style="display: flex; color: #ff3b3bc4">
+                  *Username required
+                </div>
+                <div
+                  *ngIf="validUsername"
+                  style="display: flex; color: #ff3b3bc4"
+                >
+                  *Username already exists
+                </div>
+                <input
+                  type="name"
+                  #UserName
+                  class="form-control form-control-lg"
+                  placeholder="UserName"
+                  [(ngModel)]="username"
+                  (input)="checkUsernameAvailability()"
+                  required
+                />
+                <div
+                  style="
+                    display: flex;
+                    font-size: 12px;
+                    padding-left: 1.2%;
+                    padding-top: 0.8%;
+                  "
+                >
+                  *Min 5 char
+                </div>
+              </div>
+              <div class="form-check" *ngIf="step == 1">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  #flexRadioDefault1
+                  [value]="User"
+                  [(ngModel)]="selectedOption"
+                />
+                <label class="form-check-label" for="flexRadioDefault1">
+                  User
+                </label>
+              </div>
+              <div class="form-check" *ngIf="step == 1">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  #flexRadioDefault2
+                  [value]="Restaurant"
+                  [(ngModel)]="selectedOption"
+                />
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Restaurant
+                </label>
+              </div>
+              <div
+                class="form-check"
+                *ngIf="step == 1"
+                style="padding-bottom: 6%"
+              >
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  #flexRadioDefault3
+                  [value]="Delivery"
+                  [(ngModel)]="selectedOption"
+                />
+                <label class="form-check-label" for="flexRadioDefault3">
+                  Delivery
+                </label>
+              </div>
+              <div class="form-outline form-white mb-4" *ngIf="step == 2">
+                <input
+                  type="text"
+                  #name
+                  class="form-control form-control-lg"
+                  placeholder="Name"
+                />
+              </div>
+              <div class="form-outline form-white mb-4" *ngIf="step == 2">
+                <input
+                  type="email"
+                  #typeEmailX
+                  class="form-control form-control-lg"
+                  placeholder="Email"
+                />
+              </div>
+
+              <div
+                class="form-outline form-white mb-4"
+                *ngIf="step == 2"
+                style="display: flex"
+              >
+                <input
+                  type="{{ passwordType1 }}"
+                  #typePasswordX1
+                  class="form-control form-control-lg"
+                  placeholder="Password"
+                  [(ngModel)]="password"
+                /><button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  (click)="togglePasswordVisibility1()"
+                  style="display: flex; align-items: center"
+                >
+                  <mat-icon>{{
+                    isPasswordVisible1 ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </div>
+
+              <div
+                class="form-outline form-white pb-1"
+                *ngIf="step == 2"
+                style="display: flex"
+              >
+                <input
+                  type="{{ passwordType2 }}"
+                  #typePasswordX2
+                  class="form-control form-control-lg"
+                  placeholder="Repeat Password"
+                  (input)="checkPassword()"
+                  [(ngModel)]="repatedpassword"
+                />
+                <button
+                  class="btn btn-outline-primary"
+                  type="button"
+                  (click)="togglePasswordVisibility2()"
+                  style="display: flex; align-items: center"
+                >
+                  <mat-icon>{{
+                    isPasswordVisible2 ? "visibility_off" : "visibility"
+                  }}</mat-icon>
+                </button>
+              </div>
+              <div
+                *ngIf="!validpassword && step == 2"
+                class="pb-3"
+                style="
+                  justify-content: start;
+                  display: flex;
+                  padding-left: 0.7%;
+                  color: #f04545bd;
+                "
+              >
+                *It should be same as password
+              </div>
+              <div
+                class="form-check d-flex justify-content-center mb-4"
+                *ngIf="step == 2"
+              >
+                <input
+                  class="form-check-input me-2"
+                  type="checkbox"
+                  value=""
+                  id="registerCheck"
+                  checked
+                  aria-describedby="registerCheckHelpText"
+                />
+                <label class="form-check-label" for="registerCheck">
+                  I have read and agree to the terms
+                </label>
+              </div>
+              <button
+                *ngIf="step == 2"
+                class="btn btn-outline-light btn-lg px-5"
+                type="submit"
+              >
+                Sign Up
+              </button>
+              <button
+                *ngIf="step == 1"
+                class="btn btn-outline-light btn-lg px-5"
+                type="submit"
+                (click)="onNext()"
+              >
+                Next
+              </button>
+              <button
+                *ngIf="step == 3"
+                class="btn btn-outline-light btn-lg px-5"
+                type="submit"
+              >
+                Next
+              </button>
+            </div>
+
+            <div>
+              <p class="mb-0">
+                Already have account?
+                <a href="#!" class="text-white-50 fw-bold">Log In</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
