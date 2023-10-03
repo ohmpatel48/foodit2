@@ -1,0 +1,6 @@
+#map{
+    width: 100vh;
+    height: 75vh;
+    
+}
+@import url('https://www.mapbox.com/mapbox-gl-js/api/.');

@@ -2,3 +2,11 @@
     background-color: transparent;
 }
 
+.card-custom {
+    background-color: rgba(255, 255, 255, 0.747);
+    box-shadow: -5px 6px 15px 0px rgba(255, 241, 241, 0.753);
+}
+
+.example-full-width{
+    width: 100%;
+}

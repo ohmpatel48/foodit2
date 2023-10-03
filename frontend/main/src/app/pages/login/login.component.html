@@ -1,36 +1,55 @@
-<section class="vh-100">
-    <div class="container h-100">
-      <div class="row d-flex justify-content-center align-items-center h-100">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card bg-dark text-white" style="border-radius: 1rem;">
-            <div class="card-body p-5 text-center">
-  
-              <div class="mb-md-5 mt-md-4 pb-5">
-  
-                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
-                <p class="text-white-50 mb-5">Please enter your login and password!</p>
-  
-                <div class="form-outline form-white mb-4">
-                  <input type="email" #typeEmailX class="form-control form-control-lg" placeholder="Email" />
-                </div>
-  
-                <div class="form-outline form-white mb-4">
-                  <input type="password" #typePasswordX class="form-control form-control-lg" placeholder="Password"/>
-                </div>
-  
-                <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p>
-  
-                <button class="btn btn-outline-light btn-lg px-5" (click)="login(typeEmailX.value,typePasswordX.value)" type="submit">Login</button>  
-              </div>
-  
-              <div>
-                <p class="mb-0">Don't have an account? <a href="signup" class="text-white-50 fw-bold">Sign Up</a>
+<section>
+  <div class="container h-100">
+    <div class="row d-flex justify-content-center align-items-center h-75 mt-5">
+      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+        <div class="card card-custom" style="border-radius: 1rem">
+          <div class="card-body p-5 text-center">
+            <div class="mb-md-5 mt-md-4 pb-5">
+              <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+              <p class="text-50 mb-5">Please enter your login and password!</p>
+              <form>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Email</mat-label>
+                  <input
+                    type="email"
+                    matInput
+                    #typeEmailX
+                    placeholder="Ex. pat@example.com"
+                  />
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                  <mat-label>Password</mat-label>
+                  <input
+                    type="password"
+                    matInput
+                    #typePasswordX
+                    placeholder="*********"
+                  />
+                </mat-form-field>
+                <p class="small mb-5 pb-lg-2">
+                  <a class="text-50" href="#!">Forgot password?</a>
                 </p>
-              </div>
-  
+                <button
+                  mat-raised-button
+                  class="btn"
+                  (click)="login(typeEmailX.value, typePasswordX.value)"
+                  type="submit"
+                  style="opacity: 0.75"
+                >
+                  Login
+                </button>
+              </form>
+            </div>
+
+            <div>
+              <p class="mb-0">
+                Don't have an account?
+                <a href="signup" class="text-50 fw-bold">Sign Up</a>
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>

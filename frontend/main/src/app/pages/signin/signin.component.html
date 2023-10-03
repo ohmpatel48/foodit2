@@ -1,209 +1,243 @@
-<section class="vh-75">
-  <div class="container h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-dark text-white" style="border-radius: 1rem">
-          <div class="card-body p-5 text-center">
-            <div class="mb-md-5 mt-md-4 pb-3">
-              <h3 class="pb-3">Enter your Details</h3>
-              <div class="form-outline form-white mb-2" *ngIf="step == 1">
-                <div *ngIf="entered" style="display: flex; color: #ff3b3bc4">
-                  *Username required
-                </div>
-                <div
-                  *ngIf="validUsername"
-                  style="display: flex; color: #ff3b3bc4"
-                >
-                  *Username already exists
-                </div>
-                <input
-                  type="name"
-                  #UserName
-                  class="form-control form-control-lg"
-                  placeholder="UserName"
-                  [(ngModel)]="username"
-                  (input)="checkUsernameAvailability()"
-                  required
-                />
-                <div
-                  style="
-                    display: flex;
-                    font-size: 12px;
-                    padding-left: 1.2%;
-                    padding-top: 0.8%;
-                  "
-                >
-                  *Min 5 char
-                </div>
-              </div>
-              <div class="form-check" *ngIf="step == 1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  #flexRadioDefault1
-                  [value]="User"
-                  [(ngModel)]="selectedOption"
-                />
-                <label class="form-check-label" for="flexRadioDefault1">
-                  User
-                </label>
-              </div>
-              <div class="form-check" *ngIf="step == 1">
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  #flexRadioDefault2
-                  [value]="Restaurant"
-                  [(ngModel)]="selectedOption"
-                />
-                <label class="form-check-label" for="flexRadioDefault2">
-                  Restaurant
-                </label>
-              </div>
-              <div
-                class="form-check"
-                *ngIf="step == 1"
-                style="padding-bottom: 6%"
-              >
-                <input
-                  class="form-check-input"
-                  type="radio"
-                  name="flexRadioDefault"
-                  #flexRadioDefault3
-                  [value]="Delivery"
-                  [(ngModel)]="selectedOption"
-                />
-                <label class="form-check-label" for="flexRadioDefault3">
-                  Delivery
-                </label>
-              </div>
-              <div class="form-outline form-white mb-4" *ngIf="step == 2">
-                <input
-                  type="text"
-                  #name
-                  class="form-control form-control-lg"
-                  placeholder="Name"
-                />
-              </div>
-              <div class="form-outline form-white mb-4" *ngIf="step == 2">
-                <input
-                  type="email"
-                  #typeEmailX
-                  class="form-control form-control-lg"
-                  placeholder="Email"
-                />
-              </div>
-
-              <div
-                class="form-outline form-white mb-4"
-                *ngIf="step == 2"
-                style="display: flex"
-              >
-                <input
-                  type="{{ passwordType1 }}"
-                  #typePasswordX1
-                  class="form-control form-control-lg"
-                  placeholder="Password"
-                  [(ngModel)]="password"
-                /><button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  (click)="togglePasswordVisibility1()"
-                  style="display: flex; align-items: center"
-                >
-                  <mat-icon>{{
-                    isPasswordVisible1 ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                </button>
-              </div>
-
-              <div
-                class="form-outline form-white pb-1"
-                *ngIf="step == 2"
-                style="display: flex"
-              >
-                <input
-                  type="{{ passwordType2 }}"
-                  #typePasswordX2
-                  class="form-control form-control-lg"
-                  placeholder="Repeat Password"
-                  (input)="checkPassword()"
-                  [(ngModel)]="repatedpassword"
-                />
-                <button
-                  class="btn btn-outline-primary"
-                  type="button"
-                  (click)="togglePasswordVisibility2()"
-                  style="display: flex; align-items: center"
-                >
-                  <mat-icon>{{
-                    isPasswordVisible2 ? "visibility_off" : "visibility"
-                  }}</mat-icon>
-                </button>
-              </div>
-              <div
-                *ngIf="!validpassword && step == 2"
-                class="pb-3"
-                style="
-                  justify-content: start;
-                  display: flex;
-                  padding-left: 0.7%;
-                  color: #f04545bd;
-                "
-              >
-                *It should be same as password
-              </div>
-              <div
-                class="form-check d-flex justify-content-center mb-4"
-                *ngIf="step == 2"
-              >
-                <input
-                  class="form-check-input me-2"
-                  type="checkbox"
-                  value=""
-                  id="registerCheck"
-                  checked
-                  aria-describedby="registerCheckHelpText"
-                />
-                <label class="form-check-label" for="registerCheck">
-                  I have read and agree to the terms
-                </label>
-              </div>
-              <button
-                *ngIf="step == 2"
-                class="btn btn-outline-light btn-lg px-5"
-                type="submit"
-              >
-                Sign Up
-              </button>
-              <button
-                *ngIf="step == 1"
-                class="btn btn-outline-light btn-lg px-5"
-                type="submit"
-                (click)="onNext()"
-              >
-                Next
-              </button>
-              <button
-                *ngIf="step == 3"
-                class="btn btn-outline-light btn-lg px-5"
-                type="submit"
-              >
-                Next
-              </button>
-            </div>
-
-            <div>
-              <p class="mb-0">
-                Already have account?
-                <a href="#!" class="text-white-50 fw-bold">Log In</a>
-              </p>
-            </div>
+<div style="display: flex; margin-top: 3%; justify-content: center">
+  <div
+    style="
+      background-color: rgba(255, 255, 255, 0.747);
+      box-shadow: -5px 6px 15px 0px rgba(255, 241, 241, 0.753);
+      border-radius: 1rem;
+    "
+  >
+    <mat-stepper
+      [linear]="isLinear"
+      #stepper
+      style="background-color: transparent"
+    >
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Fill out your name</ng-template>
+          <mat-form-field style="display: flex">
+            <mat-label>Username</mat-label>
+            <input
+              matInput
+              #typeUsername
+              formControlName="UsernameValidator"
+              placeholder="abc123"
+              required
+            />
+          </mat-form-field>
+          <label id="example-radio-group-label">Pick type of user</label>
+          <mat-radio-group
+            aria-labelledby="example-radio-group-label"
+            class="example-radio-group"
+            [(ngModel)]="User_type"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            <mat-radio-button
+              class="example-radio-button"
+              *ngFor="let User of User_types"
+              [value]="User"
+            >
+              {{ User }}
+            </mat-radio-button>
+          </mat-radio-group>
+          <div style="display: flex; justify-content: center">
+            <button mat-raised-button matStepperNext style="opacity: 0.75">
+              Next
+            </button>
           </div>
-        </div>
-      </div>
-    </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="secondFormGroup" label="Fill email & verify">
+        <form [formGroup]="secondFormGroup">
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Email</mat-label>
+            <input
+              matInput
+              #typeEmail
+              formControlName="Email"
+              [disabled]="isInputDisabled"
+              placeholder="abc123@example.com"
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex" *ngIf="send">
+            <mat-label>Verification code</mat-label>
+            <input
+              matInput
+              placeholder="123456"
+              type="number"
+              formControlName="Verification_code"
+              required
+            />
+          </mat-form-field>
+          <div
+            style="display: flex; justify-content: center; margin-top: 15px"
+            *ngIf="!send"
+          >
+            <button mat-raised-button (click)="sendmail(typeEmail.value)">
+              Send
+            </button>
+          </div>
+          <div
+            style="display: flex; justify-content: center; margin-top: 15px"
+            *ngIf="send"
+          >
+            <button mat-raised-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="thirdFormGroup">
+        <ng-template matStepLabel>Personal Details</ng-template>
+        <form [formGroup]="thirdFormGroup">
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              #typeFirstName
+              formControlName="firstCtrl"
+              placeholder="Joe"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              #typeLastName
+              formControlName="lastCtrl"
+              placeholder="xyz"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Phone number</mat-label>
+            <input
+              matInput
+              #typeNumber
+              type="number"
+              formControlName="number"
+              placeholder="91*******3"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              #typePassword
+              formControlName="password"
+              placeholder="********"
+              required
+              type="password"
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex">
+            <mat-label> Repeat Password</mat-label>
+            <input
+              matInput
+              #typeRepeatPassword
+              placeholder="********"
+              formControlName="repeatPassword"
+              required
+              type="password"
+              (input)="passwordcheck(typePassword.value, typeRepeatPassword.value)"
+            />
+            <mat-error *ngIf="!repeatPasswordcheck">
+              password does not match
+            </mat-error>
+          </mat-form-field>
+          <div style="display: flex; justify-content: center">
+            <button mat-raised-button matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+      <mat-step [stepControl]="fourthFormGroup">
+        <ng-template matStepLabel>Address</ng-template>
+        <form [formGroup]="fourthFormGroup">
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Building No.</mat-label>
+            <input
+              matInput
+              #typeBuilding_No
+              formControlName="buildingnumber"
+              placeholder="C-1"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Street Address</mat-label>
+            <input
+              matInput
+              #typeStreetAddress
+              formControlName="street"
+              placeholder="wall street"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>City</mat-label>
+            <input
+              matInput
+              #typeCity
+              formControlName="city"
+              placeholder="ahmadabad"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>State</mat-label>
+            <input
+              matInput
+              #typeState
+              placeholder="gujarat"
+              formControlName="state"
+              required
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -4%">
+            <mat-label>Country</mat-label>
+            <input
+              matInput
+              #typeCountry
+              placeholder="india"
+              formControlName="country"
+              required
+              type="text"
+            />
+          </mat-form-field>
+          <mat-form-field style="display: flex; margin-bottom: -2%">
+            <mat-label>Pincode</mat-label>
+            <input
+              matInput
+              #typePincode
+              formControlName="pincode"
+              type="number"
+              placeholder="380001"
+              required
+            />
+          </mat-form-field>
+          <div style="display: flex; justify-content: center">
+            <button
+              mat-raised-button
+              (click)=
+              "
+                open(
+                  typeUsername.value,
+                  typeFirstName.value,
+                  typeLastName.value,
+                  typeNumber.value,
+                  typeBuilding_No.value,
+                  typeStreetAddress.value,
+                  typeCity.value,
+                  typeState.value,
+                  typeCountry.value,
+                  typePincode.value
+                )
+              "
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </mat-step>
+    </mat-stepper>
   </div>
-</section>
+</div>
